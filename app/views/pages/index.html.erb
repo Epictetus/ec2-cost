@@ -1,0 +1,49 @@
+<h1>Amazon EC2 costs in JPY</h1>
+
+<table>
+  <tr>
+    <th>Standard</th>
+  </tr>
+<% @costs_st.each do |c| %>
+  <tr>
+    <td><%= c[0] %></td>
+    <td><%= c[1] %></td>
+  </tr>
+<% end %>
+
+<br>
+<table>
+  <tr>
+    <th>Micro</th>
+  </tr>
+<% @costs_mic.each do |c| %>
+  <tr>
+    <td><%= c[0] %></td>
+    <td><%= c[1] %></td>
+  </tr>
+<% end %>
+
+<br>
+<table>
+  <tr>
+    <th>High Memory</th>
+  </tr>
+<% @costs_h_mem.each do |c| %>
+  <tr>
+    <td><%= c[0] %></td>
+    <td><%= c[1] %></td>
+  </tr>
+<% end %>
+
+<br>
+<table>
+  <tr>
+    <th>High CPU</th>
+  </tr>
+<% @costs_h_cpu.each do |c| %>
+  <tr>
+    <td><%= c[0] %></td>
+    <td><%= c[1] %></td>
+  </tr>
+<% end %>
+</table>
