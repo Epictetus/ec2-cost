@@ -1,9 +1,11 @@
 <h1>Amazon EC2 monthly(31days) costs in JPY</h1>
+<h2>Asia Pacific Tokyo </h2>
 
 Rate:
 1米ドル = 
-<%= @rate %>
-円
+<%= number_to_currency(@rate, :unit => "円", :precision => 2, :format => '%n%u') %>
+
+
 
 <br>
 
@@ -14,7 +16,7 @@ Rate:
 <% @costs_st.each do |c| %>
   <tr>
     <td><%= c[0] %></td>
-    <td><%= c[1] %></td>
+    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
   </tr>
 <% end %>
 
@@ -26,7 +28,7 @@ Rate:
 <% @costs_mic.each do |c| %>
   <tr>
     <td><%= c[0] %></td>
-    <td><%= c[1] %></td>
+    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
   </tr>
 <% end %>
 
@@ -38,7 +40,7 @@ Rate:
 <% @costs_h_mem.each do |c| %>
   <tr>
     <td><%= c[0] %></td>
-    <td><%= c[1] %></td>
+    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
   </tr>
 <% end %>
 
@@ -50,7 +52,7 @@ Rate:
 <% @costs_h_cpu.each do |c| %>
   <tr>
     <td><%= c[0] %></td>
-    <td><%= c[1] %></td>
+    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
   </tr>
 <% end %>
 </table>
