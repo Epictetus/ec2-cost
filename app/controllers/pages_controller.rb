@@ -10,6 +10,7 @@ class PagesController < ApplicationController
     high_mem = {:extra_large => 0.60, :double_extra_large => 1.2, :quad_extra_large => 2.39}
     high_cpu = {:medium => 0.2, :extra_large => 0.8}
 
+    @rate = awc.rate
     @costs_st = awc.to_a standard
     @costs_mic = awc.to_a micro
     @costs_h_mem = awc.to_a high_mem

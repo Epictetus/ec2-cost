@@ -1,5 +1,4 @@
 #encoding: utf-8
-=begin
 require 'money'
 require 'money/bank/google_currency'
 require 'json'
@@ -10,15 +9,16 @@ Money.default_bank = Money::Bank::GoogleCurrency.new
 doll = 1.to_money(:USD)
 yen = doll.exchange_to(:JPY)
 
-p yen.cents
+p "rate: #{yen.cents}"
 
 
 RATE = yen.cents.to_f/100
-=end
-
-RATE = 78
 
 class AWSPrice
+  def rate
+    RATE
+  end
+
   def to_month_doll(cost)
     ( cost * 24 * 31 ).truncate
   end
