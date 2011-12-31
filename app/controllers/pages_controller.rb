@@ -11,10 +11,12 @@ class PagesController < ApplicationController
     high_cpu = {:medium => 0.2, :extra_large => 0.8}
 
     @rate = awc.rate
-    @costs_st = awc.to_a standard
-    @costs_mic = awc.to_a micro
-    @costs_h_mem = awc.to_a high_mem
-    @costs_h_cpu = awc.to_a high_cpu
+    @costs_st = awc.calc_cost standard
+    @costs_mic = awc.calc_cost micro
+    @costs_h_mem = awc.calc_cost high_mem
+    @costs_h_cpu = awc.calc_cost high_cpu
+    @costs = [@costs_st, @costs_mic, @costs_h_mem, @costs_h_cpu]
+    @labels = ["Standard", "Micro", "High Memory", "High CPU"]
   end
 
   # GET /pages/1

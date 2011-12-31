@@ -9,8 +9,6 @@ Money.default_bank = Money::Bank::GoogleCurrency.new
 doll = 1.to_money(:USD)
 yen = doll.exchange_to(:JPY)
 
-p "rate: #{yen.cents}"
-
 
 RATE = yen.cents.to_f/100
 
@@ -33,7 +31,7 @@ class AWSPrice
     end
   end
 
-  def to_a(arg)
+  def calc_cost(arg)
     h = {}
     arg.each do |key, val|
       h[key] = to_month_jpy val
@@ -41,7 +39,3 @@ class AWSPrice
     h
   end
 end
-
-h = {:small => 0.1, :large => 0.4, :extra_large => 0.8}
-
-#a = AWSPrice.new.print( h )

@@ -4,55 +4,22 @@
 Rate:
 1米ドル = 
 <%= number_to_currency(@rate, :unit => "円", :precision => 2, :format => '%n%u') %>
-
-
-
+<br>
 <br>
 
-<table>
-  <tr>
-    <th>Standard</th>
-  </tr>
-<% @costs_st.each do |c| %>
-  <tr>
-    <td><%= c[0] %></td>
-    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
-  </tr>
+
+<% @costs.each_with_index do |cost, index| %>
+  <table>
+  <th>
+    <%= @labels[index] %>
+  </th>
+  <% cost.each do |c| %>
+    <tr>
+      <td><%= c[0] %></td>
+      <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
+    </tr>
+  <% end %>
+  </table>
+  <br>
 <% end %>
 
-<br>
-<table>
-  <tr>
-    <th>Micro</th>
-  </tr>
-<% @costs_mic.each do |c| %>
-  <tr>
-    <td><%= c[0] %></td>
-    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
-  </tr>
-<% end %>
-
-<br>
-<table>
-  <tr>
-    <th>High Memory</th>
-  </tr>
-<% @costs_h_mem.each do |c| %>
-  <tr>
-    <td><%= c[0] %></td>
-    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
-  </tr>
-<% end %>
-
-<br>
-<table>
-  <tr>
-    <th>High CPU</th>
-  </tr>
-<% @costs_h_cpu.each do |c| %>
-  <tr>
-    <td><%= c[0] %></td>
-    <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>
-  </tr>
-<% end %>
-</table>
