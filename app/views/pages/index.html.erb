@@ -8,12 +8,12 @@ Rate:
 <br>
 
 
-<% @costs.each_with_index do |cost, index| %>
+<% @costs.each do |key, val_cost| %>
   <table>
   <th>
-    <%= @labels[index] %>
+    <%= key %>
   </th>
-  <% cost.each do |c| %>
+  <% val_cost.each do |c| %>
     <tr>
       <td><%= c[0] %></td>
       <td><%= number_to_currency(c[1], :unit => "円", :precision => 0, :format => '%n%u') %></td>

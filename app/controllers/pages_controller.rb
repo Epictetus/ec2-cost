@@ -5,18 +5,17 @@ class PagesController < ApplicationController
   # GET /pages.json
   def index
     awc = AWSPrice.new
-    standard = {:small => 0.1, :large => 0.4, :extra_large => 0.8}
-    micro    = {:micro => 0.027}
-    high_mem = {:extra_large => 0.60, :double_extra_large => 1.2, :quad_extra_large => 2.39}
-    high_cpu = {:medium => 0.2, :extra_large => 0.8}
-
     @rate = awc.rate
-    @costs_st = awc.calc_cost standard
-    @costs_mic = awc.calc_cost micro
-    @costs_h_mem = awc.calc_cost high_mem
-    @costs_h_cpu = awc.calc_cost high_cpu
-    @costs = [@costs_st, @costs_mic, @costs_h_mem, @costs_h_cpu]
-    @labels = ["Standard", "Micro", "High Memory", "High CPU"]
+
+    costs_st = awc.calc_cost :small => 0.1, :large => 0.4, :extra_large => 0.8 
+    costs_mic = awc.calc_cost :micro => 0.027 
+    costs_h_mem = awc.calc_cost :extra_large => 0.60, :double_extra_large => 1.2, :quad_extra_large => 2.39
+    costs_h_cpu = awc.calc_cost :medium => 0.2, :extra_large => 0.8
+
+    @costs = {"Standard" => costs_st, 
+              "Micro" => costs_mic, 
+              "High Memory" => costs_h_mem, 
+              "High CPU" => costs_h_cpu}
   end
 
   # GET /pages/1
